@@ -16,10 +16,4 @@ end
 
 use RedirectRootUrl
 use Rack::Static, :urls => ['/'], :root => "public"
-
-class App
-  def call(env)
-  end
-end
-
-run App.new
+run lambda{ |env| [200, {"Content-type" => "text/html"}, []] }
