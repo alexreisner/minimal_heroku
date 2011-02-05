@@ -4,7 +4,7 @@ class App
     file = "/index.html" if file == "/"
     filepath = "public" + file
     if File.exist? filepath
-      [200, {"Content-type" => "text/html"}, File.read(filepath)]
+      Rack::File.new(filepath).call(env)
     else
       [404, {"Content-type" => "text/html"}, ""]
     end
