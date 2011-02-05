@@ -17,9 +17,9 @@ class RedirectRootUrl
   end
 end
 
-use RedirectRootUrl
-use Rack::Static, :urls => ['/'], :root => "public"
 use Rack::Auth::Basic, "EF" do |username, password|
   'secret' == password
 end
+use RedirectRootUrl
+use Rack::Static, :urls => ['/'], :root => "public"
 run lambda{ |env| [200, {"Content-type" => "text/html"}, []] }
