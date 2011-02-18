@@ -18,7 +18,7 @@ class RedirectRootUrl
 end
 
 use Rack::Auth::Basic, "Fa11" do |username, password|
-  username == ENV['demo_username'] and password == ENV['demo_password']
+  username == ENV['USERNAME'] and password == ENV['PASSWORD']
 end
 use RedirectRootUrl
 use Rack::Static, :urls => ['/'], :root => "public"
